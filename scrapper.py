@@ -1,15 +1,10 @@
-import requests
-from bs4 import BeautifulSoup
+from selenium import webdriver
 
 TARGET_URL = "https://www.gst.gov.in"
 
-response = requests.get(TARGET_URL)
+driver = webdriver.chrome()
 
-print('status code', response.status_code)
+driver.get(TARGET_URL)
 
-with open('trending.html','w') as f: f.write(response.text)
-
-doc = BeautifulSoup(response.text, 'html.parser')
-
-print('Page Title ', doc.title)
+print(driver.title)
 
